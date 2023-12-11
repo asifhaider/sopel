@@ -366,10 +366,6 @@ class AsyncioBackend(AbstractIRCBackend):
 
             if self._verify_ssl and self._ca_certs is not None:
                 ssl_context.load_verify_locations(self._ca_certs)
-            elif not self._verify_ssl:
-                # deactivate SSL verification for hostname & certificate
-                ssl_context.check_hostname = False
-                ssl_context.verify_mode = ssl.CERT_NONE
 
         return {
             'host': self._host,
